@@ -9,6 +9,12 @@
   }
 }
 
+@layer components {
+  .form-control {
+    @apply w-full bg-white border-[1px] border-[#ccc] rounded-md py-3 px-4;
+  }
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

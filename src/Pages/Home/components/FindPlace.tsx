@@ -1,8 +1,12 @@
+import Container from "../../../components/Container";
+
 const FindPlace = () => {
   return (
-    <>
-      <h2>Find a Place That Fits Your Comfort</h2>
-    </>
+    <section>
+      <Container>
+        <h2>Find a Place That Fits Your Comfort</h2>
+      </Container>
+    </section>
   )
 }
 

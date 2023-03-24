@@ -1,11 +1,16 @@
-import { X, User, Minus, Plus, Search } from "lucide-react";
+import { X, User, Minus, Plus, Search, Calendar } from "lucide-react";
 import { useState } from "react";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './test.css';
 
 const SearchForm = () => {
   const [ mainForm, setMainForm ] = useState(false);
   const [ guestsForm, setGuestsForm ] = useState(false);
   const [ adults, setAdults ] = useState(0);
   const [ cildren, setChildren ] = useState(0);
+  const [ startDate, setStartDate] = useState(new Date());
+  const [ endDate, setEndDate ] = useState(new Date());
 
   function guestsCounter (counter, operation) {
     if(counter === 'adults') {
@@ -76,8 +81,46 @@ const SearchForm = () => {
           </div>
 
           <div className='grid grid-cols-2 gap-2 mb-3'>
-            <input type='text' placeholder="Text" className='form-control'/>
-            <input type='text' placeholder="Text" className='form-control'/>
+            <div className="relative">
+              <span className="font-light text-sm absolute left-12 top-2 z-[1]">
+                Check-in
+              </span>
+              <Calendar 
+                className='absolute top-[12px] left-3 top-5 z-[1] pointer-events-none'
+                strokeWidth={2}
+                color='#4f5962'
+              />
+              <DatePicker
+                dateFormat="dd/MM/yyyy"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                className='form-control pt-8 pl-12'
+              />
+            </div>
+            <div className="relative">
+              <span className="font-light text-sm absolute left-12 top-2 z-[1]">
+                Check-out
+              </span>
+              <Calendar 
+                className='absolute top-5 left-3 top-0 z-[1] pointer-events-none'
+                strokeWidth={2}
+                color='#4f5962'
+              />
+              <DatePicker
+                showIcon
+                dateFormat="dd/MM/yyyy"
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                className='form-control pt-8 pl-12'
+              />
+            </div>
           </div>
 
           <div className='mb-3 relative'>

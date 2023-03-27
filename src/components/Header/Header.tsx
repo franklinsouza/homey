@@ -4,8 +4,8 @@ import { Menu, User } from 'lucide-react';
 import Container from '../Container';
 
 const Header = () => {
-  const menuRef = useRef();
-  const optionsRef = useRef();
+  const menuRef = useRef<HTMLUListElement>(null);
+  const optionsRef = useRef<HTMLUListElement>(null);
   const [menu, setMenu] = useState(false);
   const [userOptions, setUserOptions] = useState(false);
   const [dropHeight, setDropHeight] = useState({menu: 0, userOptions: 0});
@@ -23,13 +23,15 @@ const Header = () => {
   }
   
   useEffect(() => {
-    setDropHeight(
-      previusDimension => ({
-        ...previusDimension, 
-        menu: menuRef.current.clientHeight + 20,
-        userOptions: optionsRef.current.clientHeight + 20
-      })
-    );
+    if(menuRef.current && menuRef.current) {
+      setDropHeight(
+        previusDimension => ({
+          ...previusDimension, 
+          menu: menuRef.current!.clientHeight + 20,
+          userOptions: optionsRef.current!.clientHeight + 20
+        })
+      );
+    }
   }, []);
     
 

@@ -1,6 +1,13 @@
-const Container = ({children}) => {
+import { HtmlHTMLAttributes } from "react";
+
+type ContainerProps = {
+  children: React.ReactNode,
+  className?: string
+}
+
+const Container = ({children, className}:ContainerProps) => {
   return (
-    <div className="container mx-auto px-4">
+    <div className={`container mx-auto px-4 ${className}`}>
       {children}
     </div>
   )

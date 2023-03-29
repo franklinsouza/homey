@@ -1,5 +1,3 @@
-import { HtmlHTMLAttributes } from "react";
-
 type ContainerProps = {
   children: React.ReactNode,
   className?: string
@@ -7,7 +5,7 @@ type ContainerProps = {
 
 const Container = ({children, className}:ContainerProps) => {
   return (
-    <div className={`container mx-auto px-4 ${className}`}>
+    <div className={`container mx-auto px-4 max-w-[1120px] ${className}`}>
       {children}
     </div>
   )

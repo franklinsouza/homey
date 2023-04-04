@@ -82,11 +82,11 @@ const SearchForm = () => {
 
           <div className='grid grid-cols-2 gap-2 mb-3'>
             <div className="relative">
-              <span className="font-light text-sm absolute left-12 top-2 z-[1]">
+              <span className="font-light text-sm absolute left-12 top-2 z-[1] pointer-events-none">
                 Check-in
               </span>
               <Calendar 
-                className='absolute top-[12px] left-3 top-5 z-[1] pointer-events-none'
+                className='absolute top-[12px] left-3 z-[1] pointer-events-none'
                 strokeWidth={2}
                 color='#4f5962'
               />
@@ -97,15 +97,15 @@ const SearchForm = () => {
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
-                className='form-control pt-8 pl-12'
+                className='form-control pt-8 pl-12 cursor-pointer'
               />
             </div>
             <div className="relative">
-              <span className="font-light text-sm absolute left-12 top-2 z-[1]">
+              <span className="font-light text-sm absolute left-12 top-2 z-[1] pointer-events-none">
                 Check-out
               </span>
               <Calendar 
-                className='absolute top-5 left-3 top-0 z-[1] pointer-events-none'
+                className='absolute top-[12px] left-3 z-[1] pointer-events-none'
                 strokeWidth={2}
                 color='#4f5962'
               />
@@ -118,14 +118,14 @@ const SearchForm = () => {
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
-                className='form-control pt-8 pl-12'
+                className='form-control pt-8 pl-12 cursor-pointer'
               />
             </div>
           </div>
 
           <div className='mb-3 relative'>
-            <User color="#4f5962" className='absolute top-[12px] left-3'/>
-            <input type='text' placeholder="Guests" className='form-control pl-11' value={adults + cildren} onClick={guestsFormHandle}/>
+            <User color="#4f5962" className='absolute top-[12px] left-3 pointer-events-none'/>
+            <input type='text' placeholder="Guests" className='form-control pl-11 cursor-pointer' value={adults + cildren} onClick={guestsFormHandle}/>
 
             <div className={`${guestsForm ? 'block' : 'hidden'} p-5 border-[1px] border-[#ccc] rounded-md absolute w-full bg-white top-[calc(100%_+_12px)]`}>
               <div className='flex justify-between items-center mb-3'>
@@ -138,22 +138,28 @@ const SearchForm = () => {
                   </span>
                 </div>
                 <div className='flex border border-[#54c4d9] w-[88px] h-[44px] rounded-full overflow-hidden'>
-                  <button type="button" className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'>
+                  <button 
+                    type="button" 
+                    className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'
+                    onClick={() => guestsCounter('adults', -1)}
+                  >
                     <Minus 
                       color='#54c4d9' 
                       size={20} 
                       strokeWidth={4} 
                       className='group-hover:stroke-slate-100 transition-all'
-                      onClick={() => guestsCounter('adults', -1)}
                     />
                   </button>
-                  <button type="button" className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'>
+                  <button 
+                    type="button" 
+                    className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'
+                    onClick={() => guestsCounter('adults', 1)}
+                  >
                     <Plus 
                       color='#54c4d9' 
                       size={20} 
                       strokeWidth={4} 
                       className='group-hover:stroke-slate-100 transition-all'
-                      onClick={() => guestsCounter('adults', 1)}
                     />
                   </button>
                 </div>
@@ -169,22 +175,28 @@ const SearchForm = () => {
                   </span>
                 </div>
                 <div className='flex border border-[#54c4d9] w-[88px] h-[44px] rounded-full overflow-hidden'>
-                  <button type="button" className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'>
+                  <button 
+                    type="button" 
+                    className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'
+                    onClick={() => guestsCounter('children', -1)}
+                  >
                     <Minus 
                       color='#54c4d9' 
                       size={20} 
                       strokeWidth={4} 
                       className='group-hover:stroke-slate-100 transition-all'
-                      onClick={() => guestsCounter('children', -1)}
                     />
                   </button>
-                  <button type="button" className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'>
+                  <button 
+                    type="button" 
+                    className='flex items-center justify-center w-1/2 cursor-pointer group  hover:bg-[#54c4d9] transition-all'
+                    onClick={() => guestsCounter('children', 1)}
+                  >
                     <Plus 
                       color='#54c4d9' 
                       size={20} 
                       strokeWidth={4} 
                       className='group-hover:stroke-slate-100 transition-all'
-                      onClick={() => guestsCounter('children', 1)}
                     />
                   </button>
                 </div>

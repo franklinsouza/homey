@@ -6,7 +6,9 @@ const Banner = () => {
   return (
     <div className='flex h-[600px] justify-center items-center bg-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${banner})`}}>
       <Container>
-        <SearchForm />
+        <div className='md:max-w-[480px]'>
+          <SearchForm />
+        </div>
       </Container>
     </div>
   )

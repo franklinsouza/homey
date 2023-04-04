@@ -1,7 +1,15 @@
 import Header from "../../components/Header/Header";
 import Banner from "./components/Banner";
-import FeaturedHomes from "./components/FeaturedHomes.tsx";
-import FindPlace from "./components/FindPlace";
+import FindPlace from "./sections/FindPlace/FindPlace";
+import FeaturedHomes from "./sections/FeaturedHomes/FeaturedHomes.tsx";
+import ModernApartament from "./sections/ModernApartament/ModernApartament";
+import TrendingDestinations from "./sections/TrendingDestinations/TrendingDestinations";
+import FromOurBlog from "./sections/FromOurBlog/FromOurBlog";
+import HeaderOurHosts from "./sections/HearOurHosts/HearOurHosts";
+import OurPartners from "./sections/OurPartners/OurPartners";
+import Footer from "../../components/Footer/Footer";
+
+
 
 const Home = () => {
   return (
@@ -10,9 +18,12 @@ const Home = () => {
       <Banner />
       <FindPlace />
       <FeaturedHomes />
-      <div className="container mx-auto px-4">
-        Home
-      </div>
+      <ModernApartament />
+      <TrendingDestinations />
+      <FromOurBlog />
+      <HeaderOurHosts />
+      <OurPartners />
+      <Footer />
     </>
   )
 }

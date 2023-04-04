@@ -5,9 +5,25 @@
   text-align: center;
 } */
 
-.container {
-  max-width: 1140px;
+div.swiper-pagination {
+  position: relative;
+  top: 0 !important;
 }
+
+div.swiper-pagination span.swiper-pagination-bullet-active {
+  background-color: #000;
+}
+
+div.swiper-pagination .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+}
+
+/* swiper-pagination-bullet swiper-pagination-bullet-active */
+
+/* .container {
+  max-width: 1140px;
+} */
 
 /* .logo {
   height: 6em;

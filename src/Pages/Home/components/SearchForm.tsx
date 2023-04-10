@@ -222,14 +222,14 @@ const SearchForm = () => {
               </div>
 
               <div className="flex justify-end">
-                <button type='button' className='bg-[#f15e75] text-[#FFF] py-2 px-5 font-semibold rounded-[5px] text-center' onClick={guestsFormHandle}>
+                <button type='button' className='bg-pink text-[#FFF] py-2 px-5 font-semibold rounded-[5px] text-center' onClick={guestsFormHandle}>
                   Apply
                 </button>
               </div>
             </div>
           </div>
 
-          <button className='bg-[#f15e75] text-[#FFF] w-full py-3 font-semibold rounded-[5px] text-center'>
+          <button className='bg-pink text-[#FFF] w-full py-3 font-semibold rounded-[5px] text-center'>
             Search
           </button>
         </form>

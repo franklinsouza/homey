@@ -36,7 +36,7 @@ const Header = () => {
     
 
   return (
-    <header>
+    <header className='bg-white'>
       <Container>
         <div className='py-4 flex items-center relative'>
           <div className='flex items-center justify-between w-full lg:justify-start'>
@@ -50,7 +50,7 @@ const Header = () => {
             <div 
               // style={{'height': `${menu ? dropHeight.menu+'px' : 0}`}} 
               className={`${menu ? 'h-['+dropHeight.menu+']px' : 'h-[0px] lg:h-auto'} ease-in duration-300 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:relative lg:w-auto`}>
-              <ul ref={menuRef} className='text-[#4f5962] lg:flex lg:items-center lg:gap-x-6 font-medium text-sm'>
+              <ul ref={menuRef} className='text-[#4f5962] lg:flex lg:items-center lg:gap-x-6 font-bold text-sm'>
                 <li>
                   <a href="/" className='p-4 block'>
                     Home
@@ -77,7 +77,7 @@ const Header = () => {
             <div 
               // style={{'height': `${userOptions ? dropHeight.userOptions+'px' : 0}`}} 
               className={`${userOptions ? 'h-['+dropHeight.userOptions+']px' : 'h-[0px] lg:h-auto'} ease-in duration-200 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:flex lg:items-center lg:w-auto lg:relative lg:ml-auto`}>
-              <ul ref={optionsRef} className='font-medium text-[#4f5962] px-4 text-sm lg:flex lg:items-center lg:gap-x-5 lg:mr-3'>
+              <ul ref={optionsRef} className='font-semibold text-[#4f5962] px-4 lg:px-0 text-sm lg:flex lg:items-center lg:gap-x-5'>
                 <li>
                   <a href="/" className='py-4 block'>
                     Login

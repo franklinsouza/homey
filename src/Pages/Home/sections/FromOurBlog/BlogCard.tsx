@@ -27,7 +27,7 @@ const BlogCard = () => {
           </span>
           <span className='flex items-center'>
             <User size={15} className='mr-1'/>
-            <span className='text-[#f15e75]'>By User</span>
+            <span className='text-pink'>By User</span>
           </span>
         </div>
       </div>

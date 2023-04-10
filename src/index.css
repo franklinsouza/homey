@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     color: #3b4249;
   }
 }
@@ -12,6 +12,10 @@
 @layer components {
   .form-control {
     @apply w-full bg-white border-[1px] border-[#ccc] rounded-md py-3 px-4 text-sm focus:outline-none focus:border-[#F58D9D];
+  }
+
+  .separator-line {
+    @apply border-[#d8dce1] border-dotted border-t-[1px] h-[1px] w-full block;
   }
 }
 

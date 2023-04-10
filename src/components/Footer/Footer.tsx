@@ -4,7 +4,7 @@ import { ChevronRight, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'l
 
 const Footer = () => {
   return(
-    <footer>
+    <footer className="bg-white">
       <Container className="pt-24 pb-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-x-5 mb-24">
           <div className="col-span-1 mb-8 md:pr-4">
@@ -83,7 +83,7 @@ const Footer = () => {
 
             <form className="flex gap-x-6 mb-4">
               <input type='text' className="form-control" placeholder="Enter your email"/>
-              <button className='text-white bg-[#F15E75] font-semibold px-6 rounded-md'>
+              <button className='text-white bg-pink font-semibold px-6 rounded-md'>
                 Submit
               </button>
             </form>

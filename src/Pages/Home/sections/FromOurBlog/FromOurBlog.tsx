@@ -1,5 +1,8 @@
 import Container from "../../../../components/Container";
 import BlogCard from "./BlogCard";
+import cover01 from '../../../../assets/blog-01-5-450x300.jpg';
+import cover02 from '../../../../assets/blog-02-450x300.jpg';
+import cover03 from '../../../../assets/blog-03-450x300.jpg';
 
 const FromOurBlog = () => {
   return(
@@ -15,9 +18,21 @@ const FromOurBlog = () => {
         </div>
 
         <div className='grid sm:grid-cols-2 gap-6 md:grid-cols-3'>
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
+          <BlogCard 
+            img={cover01} 
+            title='Here’s What People Are Saying About Rentals' 
+            text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin. Donec non odio…'
+          />
+          <BlogCard 
+            img={cover02}  
+            title='7 Important Facts That You Should Know About Rentals' 
+            text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin. Donec non odio…'
+          />
+          <BlogCard 
+            img={cover03}  
+            title='Ten Benefits Of Rentals That May Change Your Perspective' 
+            text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin. Donec non odio…'
+          />
         </div>
       </Container>
     </section>

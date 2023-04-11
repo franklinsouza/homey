@@ -5,7 +5,6 @@ import Header from "../../components/Header/Header";
 import Gallery from "./components/Gallery";
 import Details from "./components/Details";
 import Calendar from "react-calendar";
-//import 'react-calendar/dist/Calendar.css';
 import './calendar.css';
 import SideBar from "./components/SideBar";
 
@@ -16,8 +15,8 @@ const Single = () => {
     <div className="bg-[#F7F8F9]">
       <Header />
 
-      <Container className="flex mt-6 mb-16 gap-x-7">
-        <main className="bg-white lg:w-[68%]">  
+      <Container className="flex mt-6 mb-16 lg:gap-x-7">
+        <main className="bg-white w-full lg:w-[68%]">  
           <Gallery />
           <div className="p-10">
             <ul className="flex items-center font-medium text-sm mb-6">
@@ -121,30 +120,14 @@ const Single = () => {
 
           <Details />
 
-          <div className="flex">
-            <img src="https://demo01.gethomey.io/wp-content/uploads/2018/10/28-1.jpg" width='186px'/>
-            <img src="https://demo01.gethomey.io/wp-content/uploads/2018/10/28-1.jpg" width='186px'/>
-          </div>
+          <Details />
 
           <Details />
 
           <Details />
-          <Details />
 
           <div>
-            Map
-          </div>
-
-          <div>
-            Nearby
-          </div>
-
-          <div>
-            Terms & rules
-          </div>
-
-          <div>
-            Video
+            <iframe className='w-full h-[600px]' id="gmap_canvas" src="https://maps.google.com/maps?width=740&amp;height=600&amp;hl=en&amp;q=%20+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
           </div>
 
           <Details />
@@ -152,12 +135,24 @@ const Single = () => {
           <span className="separator-line"></span>
 
           <div className="p-10">
-            <Calendar showDoubleView={true} locale='us' className='w-full'/>
+            <Calendar showDoubleView={true} locale='us' className='mb-5'/>
+
+            <div className="flex text-sm items-center justify-center gap-x-3 font-medium">
+              <span className=" flex items-center before:w-3 before:h-3 before:bg-[#E4F4D9] before:block before:mr-2 before:rounded-sm">
+                Available
+              </span>
+              <span className=" flex items-center before:w-3 before:h-3 before:bg-[#FFEEDB] before:block before:mr-2 before:rounded-sm">
+                Pending
+              </span>
+              <span className=" flex items-center before:w-3 before:h-3 before:bg-[#FDD2D2] before:block before:mr-2 before:rounded-sm">
+                Booked
+              </span>
+            </div>
           </div>
           
         </main>
 
-        <aside className="grow">
+        <aside className="hidden lg:block lg:grow">
           <SideBar />
         </aside>
       </Container>

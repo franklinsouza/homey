@@ -1,4 +1,4 @@
-import banner from '../../../assets/39-4.jpg';
+import banner from '../../../assets/19.jpg';
 import Container from '../../../components/Container';
 import SearchForm from './SearchForm';
 

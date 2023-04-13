@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import logo from '../../assets/homey-logo.png'
 import { Menu, User } from 'lucide-react';
 import Container from '../Container';
 import { Link } from 'react-router-dom';
 import Login from '../Login';
+import Register from '../Register';
 
 const Header = () => {
-  const menuRef = useRef<HTMLUListElement>(null);
-  const optionsRef = useRef<HTMLUListElement>(null);
   const [menu, setMenu] = useState(false);
   const [userOptions, setUserOptions] = useState(false);
-  const [dropHeight, setDropHeight] = useState({menu: 0, userOptions: 0});
+  const [loginStatus, setLoginStatus] = useState(false);
+  const [registerStatus, setRegisterStatus] = useState(false);
 
   function handleMenu() {
     setMenu( previusState => !previusState);
@@ -20,24 +20,13 @@ const Header = () => {
   function handleUserOptions () {
     setUserOptions( previusState => !previusState);
     setMenu( previusState => false);
-  }
-  
-  useEffect(() => {
-    if(menuRef.current && menuRef.current) {
-      setDropHeight(
-        previusDimension => ({
-          ...previusDimension, 
-          menu: menuRef.current!.clientHeight + 20,
-          userOptions: optionsRef.current!.clientHeight + 20
-        })
-      );
-    }
-  }, []);
-    
+  }    
 
   return (
     <>    
-      <Login />
+      <Login loginStatus={loginStatus} changeStatus={setLoginStatus}/>
+      <Register registerStatus={registerStatus} changeStatus={setRegisterStatus}/>
+
       <header className='bg-white'>
         <Container>
           <div className='py-4 flex items-center relative'>
@@ -48,19 +37,18 @@ const Header = () => {
               <Link to={'/'}  className='lg:mr-8'>
                 <img src={logo} />
               </Link>
-              <div 
-                // style={{'height': `${menu ? dropHeight.menu+'px' : 0}`}} 
-                className={`${menu ? 'h-['+dropHeight.menu+']px' : 'h-[0px] lg:h-auto'} ease-in duration-300 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:relative lg:w-auto`}>
-                <ul ref={menuRef} className='text-[#4f5962] lg:flex lg:items-center lg:gap-x-6 font-bold text-sm'>
+              <nav
+                className={`${menu ? 'block' : 'hidden'} ease-in duration-300 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:block lg:relative lg:w-auto`}>
+                <ul className='text-[#4f5962] lg:flex lg:items-center lg:gap-x-6 font-bold text-sm'>
                   <li>
                     <Link to={'/'} className='p-4 block'>
                       Home
                     </Link>
                   </li>
                   <li>
-                    <a href="/" className='p-4 block'>
+                    <Link to={'/listing'} className='p-4 block'>
                       Listing
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a href="/" className='p-4 block'>
@@ -73,21 +61,26 @@ const Header = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </nav>
 
-              <div 
-                // style={{'height': `${userOptions ? dropHeight.userOptions+'px' : 0}`}} 
-                className={`${userOptions ? 'h-['+dropHeight.userOptions+']px' : 'h-[0px] lg:h-auto'} ease-in duration-200 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:flex lg:items-center lg:w-auto lg:relative lg:ml-auto`}>
-                <ul ref={optionsRef} className='font-semibold text-[#4f5962] px-4 lg:px-0 text-sm lg:flex lg:items-center lg:gap-x-5'>
+              <div
+                className={`${userOptions ? 'block' : 'hidden'} ease-in duration-200 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:flex lg:items-center lg:w-auto lg:relative lg:ml-auto`}>
+                <ul className='font-semibold text-[#4f5962] px-4 lg:px-0 text-sm lg:flex lg:items-center lg:gap-x-5'>
                   <li>
-                    <a href="/" className='py-4 block'>
+                    <span 
+                      className='py-4 block cursor-pointer' 
+                      onClick={() => setLoginStatus(true)}
+                    >
                       Login
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a href="/" className='py-4 block'>
+                    <span 
+                      className='py-4 block cursor-pointer'
+                      onClick={() => setRegisterStatus(true)}
+                    >
                       Register
-                    </a>
+                    </span>
                   </li>
                   <li>
                     <a href='/' className='text-rose-400 font-semibold py-2 px-3 text-center border border-rose-400 rounded-[4px] block my-4'>Become a Host</a>

@@ -1,6 +1,11 @@
 import Container from "../../../../components/Container";
 import HostComment from "./HostComment";
 
+import userImg01 from '../../../../assets/HomeyHost21-150x150.jpg';
+import userImg02 from '../../../../assets/HomeyHost23-1-150x150.jpg';
+import userImg03 from '../../../../assets/HomeyHost07-150x150.jpg';
+import userImg04 from '../../../../assets/HomeyHost08-150x150.jpg';
+
 const HeaderOurHosts = () => {
   return(
     <section>
@@ -15,10 +20,26 @@ const HeaderOurHosts = () => {
         </div>
 
         <div className='grid sm:grid-cols-2 gap-6 md:grid-cols-4'>
-          <HostComment />
-          <HostComment />
-          <HostComment />
-          <HostComment />
+          <HostComment 
+            comment='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu mollis eros.' 
+            pic={userImg01} 
+            name='Anna Andrews' 
+          />
+          <HostComment 
+            comment='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu mollis eros.' 
+            pic={userImg02}
+            name='Harold Warren' 
+          />
+          <HostComment 
+            comment='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu mollis eros.' 
+            pic={userImg03} 
+            name='Michelle Wright' 
+          />
+          <HostComment 
+            comment='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu mollis eros.' 
+            pic={userImg04} 
+            name='Mike Forward' 
+          />
         </div>
       </Container>
     </section>

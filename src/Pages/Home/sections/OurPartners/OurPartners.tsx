@@ -4,6 +4,13 @@ import { Pagination, Navigation } from "swiper";
 import 'swiper/css';
 import "swiper/css/pagination";
 
+import partner01 from '../../../../assets/logo-1.jpg';
+import partner02 from '../../../../assets/logo-6.jpg';
+import partner03 from '../../../../assets/logo-2.jpg';
+import partner04 from '../../../../assets/logo-3.jpg';
+import partner05 from '../../../../assets/logo-4.jpg';
+import partner06 from '../../../../assets/logo-5.jpg';
+
 const OurPartners = () => {
   return(
     <section className="bg-[#F7F8F9]">
@@ -44,25 +51,28 @@ const OurPartners = () => {
           }}
         >
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner01} className="mx-auto"/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner02} className="mx-auto"/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner03} className="mx-auto"/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner04} className="mx-auto"/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner05} className="mx-auto"/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner06} className="mx-auto"/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src='https://demo02.gethomey.io/wp-content/uploads/2018/10/logo-2.jpg' className="mx-auto"/>
+            <img src={partner01} className="mx-auto"/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={partner02} className="mx-auto"/>
           </SwiperSlide>
         </Swiper>
         </div>

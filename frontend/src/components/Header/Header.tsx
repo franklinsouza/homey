@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
-  const { userLogOut, data, setModal } = useContext(AuthContext);
+  const { data, userLogOut, setModal } = useContext(AuthContext);
   const [menu, setMenu] = useState(false);
   const [userOptions, setUserOptions] = useState(false);
 
@@ -70,7 +70,7 @@ const Header = () => {
               <div
                 className={`${userOptions ? 'block' : 'hidden'} ease-in duration-200 z-[1] absolute top-full bg-white w-full left-0 overflow-hidden lg:flex lg:items-center lg:w-auto lg:relative lg:ml-auto`}>
                 <ul className='font-semibold text-[#4f5962] px-4 lg:px-0 text-sm lg:flex lg:items-center lg:gap-x-5'>
-                  {Object.keys(data).length > 0 ? 
+                  {data.id ? 
                     <>                  
                       <li>
                         Olá, {data.username}

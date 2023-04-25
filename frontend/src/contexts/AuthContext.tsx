@@ -4,19 +4,56 @@ import { toast } from "react-toastify";
 import { login, logOut, register, me } from "../utils/api";
 
 type ContextProps = {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export const AuthContext = createContext();
+type userlogin = {
+  email: string;
+  password: string;
+}
+
+type userRegister = {
+  username: string;
+  email: string;
+  password: string;
+  typeOption: string
+}
+
+type userData = {
+  id: string;
+  username: string
+}
+
+type modal = {
+  login: boolean;
+  register: boolean
+}
+
+type AuthContext = {
+  userLogin: {
+    email: string;
+    password: string;
+  };
+  userRegister: userRegister;
+  loading: boolean;
+  error: string | null;
+  modal: modal;
+  setModal: {
+    login: boolean;
+    register: boolean;
+  }
+}
+
+export const AuthContext = createContext({} as AuthContext);
 
 export const AuthStorage = ({children}: ContextProps) => {
-  const [data, setData] = useState({});
-  const [logged, setLogged] = useState(false)
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [modal, setModal] = useState({login: false, register: false});
+  const [data, setData] = useState<userData | {}>({id: '', username: ''});
+  const [logged, setLogged] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [modal, setModal] = useState<modal>({login: false, register: false});
 
-  const userLogin = async (email, password) => {
+  const userLogin = async({email, password}:userlogin) => {
     try {
       setError(null);
       setLoading(true);
@@ -38,14 +75,14 @@ export const AuthStorage = ({children}: ContextProps) => {
     }
   }
   
-  const userRegister = async (username, email, password, typeOption) => {
+  const userRegister = async ({username, email, password, typeOption}:userRegister):Promise<void> => {
     try{
       setError(null);
       setLoading(true);
       const {url, options} = register({username, email, password, typeOption});
       const res = await fetch(url, options);
       if(!res.ok) throw new Error('There was a problem creating your account.');
-      await userLogin(email, password);
+      await userLogin({email, password});
       setModal(prevState => ({...prevState, register: false}));
       toast.success("Registered Successfully", {
         position: toast.POSITION.BOTTOM_RIGHT
@@ -61,7 +98,6 @@ export const AuthStorage = ({children}: ContextProps) => {
   const userLogOut = async () => {
     const {url, options} = logOut();
     const res = await fetch(url, options);
-    console.log(res);
     if(!res.ok) throw new Error('There was a problem while logging out.');
     setData({});
   }

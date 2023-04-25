@@ -16,8 +16,8 @@ const Register = () => {
   const [passwordField, setPasswordField] = useState();
   const [typeOption, setTypeOption] = useState();
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
     if(emailField && passwordField) {
       userRegister(userName, emailField, passwordField, typeOption);

@@ -5,25 +5,25 @@ import { useContext, useState } from "react";
 import { Loader2 } from "lucide-react";
 
 const Login = ( ) => {
-  const { 
+  const {
     userLogin,
     loading,
     error,
     modal,
     setModal
   } = useContext(AuthContext);
-  const [emailField, setEmailField] = useState();
-  const [passwordField, setPasswordField] = useState();
+  const [emailField, setEmailField] = useState<string>('');
+  const [passwordField, setPasswordField] = useState<string>('');
 
   const handleClose = () => {
     setModal(prevState => ({ ...prevState, login: false }));
   }
 
-  const onSubmit = event => {
-    event.preventDefault();
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     
     if(emailField && passwordField) {
-      userLogin(emailField, passwordField);
+      userLogin({email:emailField, password:passwordField});
     }
   }
   

@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { toast } from "react-toastify"
 
+type requestType = {
+  url: string;
+  options: RequestInit,
+  alert: boolean
+}
+
 const useFetch = () => {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const request = async (url, options, alert) => {
+  const request = async ({url, options, alert}:requestType) => {
     let res;
     let json;
     try{
@@ -14,7 +20,6 @@ const useFetch = () => {
       setLoading(true);
       res = await fetch(url, options)
       json = await res.json();
-      console.log(json);
       if(!res.ok) throw new Error('Error occured');
 
       if(alert) {

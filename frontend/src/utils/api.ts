@@ -1,4 +1,31 @@
-export function login (body) {
+type reqType = {
+  url: string, 
+  options: RequestInit
+}
+
+type loginBody = {
+  email: string,
+  password: string
+}
+
+type registerBody = {
+  username: string
+  email: string
+  password: string
+  typeOption: string
+}
+
+type hostPostBody = {
+  owner: string, 
+  username: string, 
+  title: string,
+  address: string,
+  bedrooms: string,
+  type: string
+}
+
+
+export function login(body:loginBody):reqType{
   return {
     url: 'http://localhost:3000/api/customers/login',
     options: {
@@ -12,7 +39,7 @@ export function login (body) {
   };
 }
 
-export function logOut () {
+export function logOut():reqType {
   return {
     url: 'http://localhost:3000/api/customers/logout',
     options: {
@@ -22,7 +49,7 @@ export function logOut () {
   }
 }
 
-export function register (body) {
+export function register(body:registerBody):reqType {
   return {
     url: 'http://localhost:3000/api/customers',
     options: {
@@ -35,7 +62,7 @@ export function register (body) {
   }
 }
 
-export function me () {
+export function me():reqType {
   return {
     url: 'http://localhost:3000/api/customers/me',
     options: {
@@ -44,7 +71,7 @@ export function me () {
   }
 }
 
-export function hostPost (body) {
+export function hostPost(body:hostPostBody):reqType {
   return {
     url: 'http://localhost:3000/api/hosts',
     options: {

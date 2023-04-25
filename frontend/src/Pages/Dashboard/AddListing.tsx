@@ -6,14 +6,14 @@ import { Loader2 } from "lucide-react";
 import { hostPost } from "../../utils/api";
 
 const AddListing = () => {
-  const {data:contextData} = useContext(AuthContext);
+  const {data : contextData} = useContext(AuthContext);
   const {data, loading, error, request} = useFetch();
-  const [title, setTitle] = useState();
-  const [address, setAddress] = useState();
-  const [bedrooms, setBedrooms] = useState();
-  const [type, setType] = useState();
+  const [title, setTitle] = useState<string>('');
+  const [address, setAddress] = useState<string>('');
+  const [bedrooms, setBedrooms] = useState<string>('');
+  const [type, setType] = useState<string>('');
   
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     const {url, options} = hostPost({

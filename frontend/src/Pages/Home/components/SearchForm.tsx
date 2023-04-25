@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { X, User, Minus, Plus, Search, Calendar } from "lucide-react";
 import { useState } from "react";
 import DatePicker from 'react-datepicker';

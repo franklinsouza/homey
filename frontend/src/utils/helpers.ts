@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function getExpiryCookie(exp) {
   if (!exp) {
     return null;

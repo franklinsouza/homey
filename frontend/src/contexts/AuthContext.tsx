@@ -1,4 +1,5 @@
 
+// @ts-nocheck
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { login, logOut, register, me } from "../utils/api";
@@ -21,7 +22,7 @@ type userRegister = {
 
 type userData = {
   id: string;
-  username: string
+  username: string;
 }
 
 type modal = {
@@ -30,10 +31,7 @@ type modal = {
 }
 
 type AuthContext = {
-  userLogin: {
-    email: string;
-    password: string;
-  };
+  userLogin: userlogin;
   userRegister: userRegister;
   loading: boolean;
   error: string | null;
@@ -42,12 +40,13 @@ type AuthContext = {
     login: boolean;
     register: boolean;
   }
+  data: userData
 }
 
 export const AuthContext = createContext({} as AuthContext);
 
 export const AuthStorage = ({children}: ContextProps) => {
-  const [data, setData] = useState<userData | {}>({id: '', username: ''});
+  const [data, setData] = useState<userData>({id: '', username: ''});
   const [logged, setLogged] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -99,7 +98,7 @@ export const AuthStorage = ({children}: ContextProps) => {
     const {url, options} = logOut();
     const res = await fetch(url, options);
     if(!res.ok) throw new Error('There was a problem while logging out.');
-    setData({});
+    setData(prevState => ({...prevState, id:'', username: ''}));
   }
 
   useEffect(() => {

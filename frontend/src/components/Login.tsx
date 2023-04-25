@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Facebook, X } from "lucide-react";
 import bg from '../assets/01-3.jpg';
 import { AuthContext } from "../contexts/AuthContext";

@@ -1,18 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-toastify"
 
-type requestType = {
-  url: string;
-  options: RequestInit,
-  alert: boolean
-}
-
 const useFetch = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const request = async ({url, options, alert}:requestType) => {
+  const request = async (url:string, options:RequestInit, alert:boolean) => {
     let res;
     let json;
     try{

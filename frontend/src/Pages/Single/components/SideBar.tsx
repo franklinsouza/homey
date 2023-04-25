@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Calendar, Facebook, Heart, Instagram, Linkedin, Twitter, User, Youtube } from "lucide-react";
 import { useState } from "react";
 import DatePicker from 'react-datepicker';

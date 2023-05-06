@@ -7,9 +7,9 @@ type AuthContext = {
   userRegister: (args:UserRegister) => Promise<void>;
   userLogOut: () => Promise<void>;
   data: UserData;
-  logged: Boolean;
-  loading: Boolean;
-  error: String | null;
+  logged: boolean;
+  loading: boolean;
+  error: string | null;
   modal: ModalState;
   setModal: React.Dispatch<React.SetStateAction<ModalState>>;
 }
@@ -47,25 +47,32 @@ export const AuthStorage = ({children}:ContextProps) => {
   const [data, setData] = useState<UserData>({id: '', username: ''});
   const [logged, setLogged] = useState(false)
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<String | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [modal, setModal] = useState<ModalState>({login: false, register: false});
 
   const userLogin = async({email, password}:Userlogin) => {
     try {
       setError(null);
       setLoading(true);
+
       const { url, options } = login({email, password});
-      const res = await fetch(url, options);
-      if(!res.ok) throw new Error('Invalid login');
-      const json = await res.json();
-      const {id , username} = json.user;
-      setData(prevState => ({...prevState, id, username}));
-      setModal(prevState => ({...prevState, login: false}));
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        throw new Error('Invalid login');
+      }
+
+      const data = await response.json();
+      const {id , username} = data.user;
+
+      setData(prevUserData => ({...prevUserData, id, username}));
+      setModal(prevModalState => ({...prevModalState, login: false}));
+
       toast.success("Logged Successfully", {
         position: toast.POSITION.BOTTOM_RIGHT
       });
     }catch(error){
-      setError('Invalid login');
+      setError('An error occurred during login');
       setLogged(false);
     }finally {
       setLoading(false);
@@ -76,16 +83,23 @@ export const AuthStorage = ({children}:ContextProps) => {
     try{
       setError(null);
       setLoading(true);
+
       const {url, options} = register({userName, email, password, typeOption});
-      const res = await fetch(url, options);
-      if(!res.ok) throw new Error('There was a problem creating your account.');
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        throw new Error('An error occurred during creating your account.');
+      }
+
       await userLogin({email, password});
-      setModal(prevState => ({...prevState, register: false}));
+
+      setModal(prevModalState => ({...prevModalState, register: false}));
+
       toast.success("Registered Successfully", {
         position: toast.POSITION.BOTTOM_RIGHT
       });
     }catch(_){
-      setError('There was a problem creating your account.');
+      setError('An error occurred during creating your account.');
       setLogged(false);
     }finally{
       setLoading(false);
@@ -94,9 +108,13 @@ export const AuthStorage = ({children}:ContextProps) => {
 
   const userLogOut = async () => {
     const {url, options} = logOut();
-    const res = await fetch(url, options);
-    if(!res.ok) throw new Error('There was a problem while logging out.');
-    setData(prevState => ({...prevState, id:'', username: ''}));
+    const response = await fetch(url, options);
+    
+    if(!response.ok) {
+      throw new Error('There was a problem while logging out.');
+    }
+
+    setData(prevUserData => ({...prevUserData, id:'', username: ''}));
   }
 
   useEffect(() => {

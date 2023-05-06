@@ -1,13 +1,11 @@
-// @ts-nocheck
-
 import { Calendar, Facebook, Heart, Instagram, Linkedin, Twitter, User, Youtube } from "lucide-react";
 import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const SideBar = ( ) => {
-  const [ startDate, setStartDate] = useState(new Date());
-  const [ endDate, setEndDate ] = useState(new Date());
+  const [ startDate, setStartDate] = useState<Date | null>(new Date());
+  const [ endDate, setEndDate ] = useState<Date | null>(new Date());
 
   return(
     <div className="bg-white">
@@ -84,7 +82,7 @@ const SideBar = ( ) => {
 
         <div className='p-5'>
           <button 
-            className='border border-[#d8dce1] text-sm text-sm text-[#949ca5] font-bold w-full rounded-sm py-2 mb-2 flex justify-center items-center'>
+            className='border border-[#d8dce1] text-sm text-[#949ca5] font-bold w-full rounded-sm py-2 mb-2 flex justify-center items-center'>
            <Heart size={15} className="mr-1"/> 
            Add to Favorite
           </button>

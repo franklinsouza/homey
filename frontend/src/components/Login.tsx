@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Facebook, X } from "lucide-react";
 import bg from '../assets/01-3.jpg';
 import { AuthContext } from "../contexts/AuthContext";
@@ -15,9 +14,10 @@ const Login = ( ) => {
   } = useContext(AuthContext);
   const [emailField, setEmailField] = useState<string>('');
   const [passwordField, setPasswordField] = useState<string>('');
-
+  
+  
   const handleClose = () => {
-    setModal(prevState => ({ ...prevState, login: false }));
+    setModal(prevState => ({...prevState, login: false}));
   }
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

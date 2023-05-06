@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-datepicker": "^4.11.2",
     "lucide-react": "^0.125.0",
     "react": "^18.2.0",
     "react-calendar": "^4.2.1",

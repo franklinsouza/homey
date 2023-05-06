@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { X, User, Minus, Plus, Search, Calendar } from "lucide-react";
 import { useState } from "react";
 import DatePicker from 'react-datepicker';
@@ -11,10 +9,10 @@ const SearchForm = () => {
   const [ guestsForm, setGuestsForm ] = useState(false);
   const [ adults, setAdults ] = useState(0);
   const [ cildren, setChildren ] = useState(0);
-  const [ startDate, setStartDate] = useState(new Date());
-  const [ endDate, setEndDate ] = useState(new Date());
+  const [ startDate, setStartDate] = useState<Date | null>(new Date());
+  const [ endDate, setEndDate ] = useState<Date | null>(new Date());
 
-  function guestsCounter (counter, operation) {
+  function guestsCounter (counter: string, operation: number) {
     if(counter === 'adults') {
       setAdults( previousAdults => {
         const newAdults = previousAdults + operation;

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Facebook, Loader2, X } from "lucide-react";
 import bg from '../assets/01-3.jpg';
 import { AuthContext } from "../contexts/AuthContext";
@@ -12,16 +11,16 @@ const Register = () => {
     modal,
     setModal 
   } = useContext(AuthContext);
-  const [userName, setUserName] = useState();
-  const [emailField, setEmailField] = useState();
-  const [passwordField, setPasswordField] = useState();
-  const [typeOption, setTypeOption] = useState();
+  const [userName, setUserName] = useState('');
+  const [email, setEmailField] = useState('');
+  const [password, setPasswordField] = useState('');
+  const [typeOption, setTypeOption] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if(emailField && passwordField) {
-      userRegister(userName, emailField, passwordField, typeOption);
+    if(email && password) {
+      userRegister({userName, email, password, typeOption});
     }
   }
 

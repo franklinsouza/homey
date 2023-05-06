@@ -9,7 +9,7 @@ type loginBody = {
 }
 
 type registerBody = {
-  username: string
+  userName: string
   email: string
   password: string
   typeOption: string

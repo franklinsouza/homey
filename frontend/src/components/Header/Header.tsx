@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { useContext, useState } from 'react';
 import logo from '../../assets/homey-logo.png'
 import { Menu, User } from 'lucide-react';
